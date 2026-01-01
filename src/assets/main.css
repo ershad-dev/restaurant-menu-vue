@@ -1,0 +1,297 @@
+/* ================================
+   GLOBAL THEME VARIABLES
+================================ */
+:root {
+  background-image: url("@/assets/images/food-bg1.jpg");
+  background-size: cover;
+  /* --bg-main: #000000;                  بک‌گراند اصلی */
+  --gold: #e61e1e;                      /* رنگ طلایی برند */
+  --red-main: #d30000;                  /* رنگ قرمز */
+  --green-price: #22c55e;               /* رنگ قیمت */
+  --text-main: #c0c0c0;                 /* متن اصلی */
+  --text-muted: #b5b5b5;                /* متن ثانویه */
+  --glass-black: rgba(255, 255, 255, 0.7); /* افکت شیشه‌ای */
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(120px);
+  --overlay: rgba(168, 141, 50, 0.45);
+}
+
+/* ================================
+   BODY BACKGROUND
+================================ */
+body {
+  background: radial-gradient(circle at top, rgba(255, 204, 0, 0.1), var(--bg-main) 95%), 
+              linear-gradient(to bottom, transparent, #ffffffaa 100%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  font-family: 'Lalezar', sans-serif;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+/* ================================
+   RESET & GLOBAL
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  direction: rtl;
+  text-align: right;
+}
+
+/* ================================
+   SCROLLBAR
+================================ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--red-main);
+  border-radius: 10px;
+}
+
+/* ================================
+   CATEGORY NAV
+================================ */
+.category-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  gap: 14px;
+  padding: 12px 16px;
+  background: rgba(15, 15, 15, 0.9);
+  backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.category-item {
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.category-item:hover,
+.category-item.active {
+  color: var(--gold);
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 4px;
+}
+
+/* ================================
+   MENU ITEMS
+================================ */
+.menu-list {
+  padding: 20px;
+}
+
+.menu-card {
+  background: var(--glass-black);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  padding: 14px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.menu-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.menu-title {
+  font-size: 18px;
+  color: var(--gold);
+}
+
+.menu-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 6px 0;
+}
+
+.menu-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--green-price);
+}
+
+/* ================================
+   MODAL
+================================ */
+.modal-backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+}
+
+.modal-content {
+  background: var(--glass-black);
+  backdrop-filter: var(--glass-blur);
+  border-radius: 20px;
+  padding: 20px;
+  color: var(--text-main);
+}
+
+/* ================================
+   CART BUTTON
+================================ */
+.cart-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  color: var(--gold);
+  padding: 12px 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  z-index: 200;
+  transition: 0.3s;
+}
+
+.cart-btn:hover {
+  background: var(--red-main);
+  color: #fff;
+}
+
+/* ================================
+   CART SHEET
+================================ */
+.cart-sheet {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay);
+  backdrop-filter: blur(6px);
+  z-index: 999;
+}
+
+.cart-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-height: 70%;
+  
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  padding: 20px;
+  animation: slideUp 0.35s ease;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.cart-item img {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.cart-controls button {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.cart-controls button:hover {
+  background: var(--gold);
+  color: #fffbfb;
+}
+
+.cart-total {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--green-price);
+}
+
+/* ================================
+   TOASTS
+================================ */
+.toast {
+  position: fixed;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--green-price);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 3000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.toast-close {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* ================================
+   ANIMATIONS
+================================ */
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .menu-list { padding: 14px; }
+  .menu-title { font-size: 16px; }
+  .menu-price { font-size: 14px; }
+}
+
+
+/* ================================
+   GLOBAL SCROLLBAR
+================================ */
+::-webkit-scrollbar {
+  width: 8px; /* ضخامت اسکرول */
+}
+
+::-webkit-scrollbar-track {
+  background: #1A1A1A; /* ریل تیره */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #FFD700; /* طلایی */
+  border-radius: 10px;
+  border: 2px solid rgba(0,0,0,0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #FF6B3A; /* نارنجی برای hover */
+}
+
+/* برای Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #FFD700 #1A1A1A;
+}
