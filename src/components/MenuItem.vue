@@ -109,7 +109,7 @@ export default {
 .info h3 {
   margin: 0;
   font-size: 17px;
-  color: #ffc107;
+  color: #aca5a5ff;
 }
 
 .info .price {
